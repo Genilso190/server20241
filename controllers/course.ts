@@ -32,5 +32,16 @@ export async function saveCourse(req: Request, res: Response) {
   }
 }
 
-
+export async function deleteCourse(req: Request, res: Response){
+  const client = await pool.connect();
+  const id = req.params.id
+ try{ 
+  const response = await client.query(`delete from courses where id=${id}`);
+  res.status(200).json({message: "Registro Excliido"});
+}catch (error){ 
+res.status(400).json({message: "Erro na Exclusão", error});
+}finally{ 
+  client.release()
+}
+}
 
