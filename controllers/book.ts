@@ -23,7 +23,7 @@ export async function saveBook(req: Request, res: Response) {
   const client = await pool.connect();
   try {
     //realiza consulta sql
-    const response = await client.query(`INSERT INTO books (title, description) VALUES ('${book.description}')`)
+    const response = await client.query(`INSERT INTO books (title, description) VALUES ('${book.title}','${book.description}')`)
     res.status(201).json(response);
   } catch (error) {
     res.status(400).json({ message: 'Dados inválidos:', error });
