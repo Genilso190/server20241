@@ -6,7 +6,7 @@ export async function listMonitor(req: Request, res: Response) {
   const client = await pool.connect();
   //realiza consulta sql
   try {
-    const monitor = await client.query(`select * from Monitor`)
+    const monitor = await client.query(`select * from monitor`)
     //retorna consulta em formato json
     return res.status(200).json(monitor.rows);
   } catch (error) {
