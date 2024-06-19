@@ -23,7 +23,7 @@ export async function saveMonitor(req: Request, res: Response) {
   const client = await pool.connect();
   try {
     //realiza consulta sql
-    const response = await client.query(`INSERT INTO monitor (marca) VALUES ('${monitor.brand}')`)
+    const response = await client.query(`INSERT INTO monitor (brand) VALUES ('${monitor.brand}')`)
     res.status(201).json(response);
   } catch (error) {
     res.status(400).json({ message: 'Dados inválidos:', error });
